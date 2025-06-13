@@ -1,0 +1,36 @@
+<h2 mat-dialog-title class="text-center">Pedido #{{ data.pedido.id }}</h2>
+
+<mat-dialog-content>
+  <div class="grid grid-cols-3 mb-4 text-center">
+    <p>Fecha: {{ data.pedido.fecha | date : 'dd/MM/yyy' }}</p>
+    <p>Estado: {{ data.pedido.estado }}</p>
+    <p>Total: {{ data.pedido.total | currency: 'PEN': 'S/' }}</p>
+  </div>
+
+  <table class="custom-table">
+    <thead>
+      <th>#</th>
+      <th>Producto</th>
+      <th>Imagen</th>
+      <th>Cantidad</th>
+      <th>Precio unitario</th>
+      <th>Subtotal</th>
+    </thead>
+    <tbody>
+      @for (item of data.detalles; track $index) {
+      <tr>
+        <td>{{ $index + 1 }}</td>
+        <td>{{ item.producto }}</td>
+        <img [src]="item.imagen_producto" [attr.alt]="item.producto" class="producto-imagen" />
+        <td>{{ item.cantidad }}</td>
+        <td>{{ item.precio_unitario | currency: 'PEN': 'S/' }}</td>
+        <td>{{ item.subtotal | currency: 'PEN': 'S/' }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button matButton mat-dialog-close>Ok</button>
+</mat-dialog-actions>

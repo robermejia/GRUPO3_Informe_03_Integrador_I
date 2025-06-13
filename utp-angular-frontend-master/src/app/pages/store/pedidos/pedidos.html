@@ -1,0 +1,60 @@
+<app-header-toolbar></app-header-toolbar>
+
+<div class="container mx-auto mt-5">
+
+  <div>
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+      class="custom-table">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.id }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.fecha | date: 'dd/MM/yyyy' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.estado }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Total</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.total | currency: 'PEN': 'S/' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let element">
+          <button matIconButton matTooltip="Ver detalles" class="!text-sky-600" (click)="verDetallesPedido(element)">
+            <mat-icon>list_alt</mat-icon>
+          </button>
+          @if (element.estado === 'Pendiente') {
+          <button matIconButton matTooltip="Pagar" class="!text-green-600" (click)="pagarPedido(element)">
+            <mat-icon>payments</mat-icon>
+          </button>
+          <button matIconButton matTooltip="Anular" class="!text-red-600" (click)="anularPedido(element)">
+            <mat-icon>cancel</mat-icon>
+          </button>
+          }
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let rows; columns: columns"></tr>
+    </table>
+
+    <mat-paginator [length]="resultsLength" [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-[#34445d]">
+
+  <div _ngcontent-ng-c3952633943="" class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <img _ngcontent-ng-c3952633943="" src="images/logo.jpg" alt="UTP LOGO" class="mx-auto mb-3 !bg-contain">
+  </div>
+  <div [formGroup]="form" class="mt-1 sm:mx-auto sm:w-full sm:max-w-sm">
+
+    <div class="space-y-6 ng-dirty ng-touched ng-valid">
+      <mat-form-field class="w-full">
+        <mat-label>Correo</mat-label>
+        <input matInput type="email" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field class="w-full">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password">
+      </mat-form-field>
+
+      <button
+        class="flex w-full justify-center rounded-md bg-[#ffcf00] px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-[#dfb600] focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-bg-[#7b1623]"
+        [disabled]="form.invalid" (click)="loginClick()">Ingresar</button>
+    </div>
+  </div>
+
+</div>

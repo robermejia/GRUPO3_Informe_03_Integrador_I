@@ -1,0 +1,78 @@
+<div class="container mx-auto mt-5">
+  <h1 class="text-2xl text-center my-4">Listado de Productos</h1>
+  <div class="flex justify-between">
+    <mat-form-field>
+      <input id="nombre-search" matInput placeholder="Buscar" (input)="onSearch($event)">
+    </mat-form-field>
+    <mat-paginator [length]="resultsLength" [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+  <!-- Tabla -->
+  <div>
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+      class="productos-table">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.id }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="imagen">
+        <th mat-header-cell *matHeaderCellDef>Imagen</th>
+        <td mat-cell *matCellDef="let element">
+          <img [src]="element.imagen" alt="{{ element.nombre }}" class="producto-imagen" />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.nombre }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="precio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Precio</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.precio }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="stock">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Stock</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.stock }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let element" class="w-[60px]">
+          <div class="flex gap-3 align-middle">
+            <button matMiniFab class="!bg-[#ffcf00] !hover:bg-[#dfb600] !text-black" matTooltip="Editar" (click)="editarProducto(element)">
+              <mat-icon >edit</mat-icon>
+            </button>
+            <button matMiniFab class="!bg-[#34445d] !text-white" matTooltip="Eliminar"
+              (click)="eliminarProducto(element.id)"><mat-icon>delete</mat-icon></button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr *matNoDataRow>
+        <td [attr.colspan]="columns.length">
+          @if (isLoading) {
+          <h2>Cargando...</h2>
+          } @else if (!isLoading && dataSource.data.length === 0) {
+          <h2>No se encontraron datos</h2>
+          }
+        </td>
+      </tr>
+
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let rows; columns: columns"></tr>
+    </table>
+
+    <mat-paginator [length]="resultsLength" [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+
+</div>

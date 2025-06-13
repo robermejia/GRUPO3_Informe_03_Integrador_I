@@ -1,0 +1,44 @@
+<app-header-toolbar></app-header-toolbar>
+
+<div class="container mx-auto mt-5">
+
+  <div class="flex">
+    <div>
+      <mat-form-field>
+        <mat-label>Buscar...</mat-label>
+        <input matInput type="text" [formControl]="busquedaControl">
+      </mat-form-field>
+
+      <a matButton="filled" routerLink="/carrito-compras" class="!bg-[#ffcf00] !hover:bg-[#dfb600] !text-black">Ir al carrito</a>
+    </div>
+
+    <div class="flex-1">
+      <mat-paginator [length]="resultsLength" [pageSize]="pageSize" [pageIndex]="pageIndex"
+        [pageSizeOptions]="[16, 50, 100]" showFirstLastButtons (page)="handlePageEvent($event)"></mat-paginator>
+    </div>
+
+  </div>
+
+  <div class="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+
+    @for (product of products; track product.id) {
+    <mat-card appearance="outlined">
+      <img mat-card-image [src]="product.imagen" [attr.alt]="product.nombre" />
+
+      <mat-card-content>
+        <h3 class="text-lg">{{ product.nombre }}</h3>
+        <p class="text-green-500">{{ product.precio | currency: 'PEN' : 'S/ ' }}</p>
+        <p>Stock: {{ product.stock }}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button matButton (click)="addProduct(product)">Agregar al carrito</button>
+      </mat-card-actions>
+    </mat-card>
+    }
+
+  </div>
+
+  <mat-paginator [length]="resultsLength" [pageSize]="pageSize" [pageIndex]="pageIndex"
+    [pageSizeOptions]="[16, 50, 100]" showFirstLastButtons (page)="handlePageEvent($event)"></mat-paginator>
+</div>

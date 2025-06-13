@@ -1,0 +1,25 @@
+{
+  "name": "utp-angular-frontend",
+  "image": "node:22",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "aaron-bond.better-comments",
+        "PKief.material-icon-theme",
+        "zh9528.file-size",
+        "eamodio.gitlens",
+        "angular.ng-template",
+        "esbenp.prettier-vscode",
+        "EditorConfig.EditorConfig",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  },
+  "postCreateCommand": "git config --global --add safe.directory /workspaces/*",
+  "runArgs": [
+    "--name",
+    "utp-angular-frontend-devcontainer"
+  ],
+  "remoteUser": "node",
+  "updateRemoteUserUID": true
+}

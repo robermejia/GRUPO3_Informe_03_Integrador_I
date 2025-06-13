@@ -1,0 +1,100 @@
+/* Importa la fuente Roboto (opcional, para look Material) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import "tailwindcss";
+
+html,
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fa;
+}
+
+/* Colores personalizados */
+:root {
+    --primary-color: #1976d2;
+    /* azul */
+    --secondary-color: #ffc107;
+    /* amarillo */
+}
+
+.mat-mdc-button.mat-primary {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+.mat-mdc-button.mat-accent {
+    background-color: var(--secondary-color) !important;
+    color: black !important;
+}
+
+.mat-mdc-table {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mat-mdc-header-cell {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/*
+4️⃣ Extra (opcional):
+Si quieres que los botones tengan azul de fondo y amarillo cuando haces hover, puedes agregar esto en tu styles.css:
+*/
+.mat-mdc-raised-button.mat-primary {
+    background-color: #3F51B5;
+    color: white;
+}
+
+.mat-mdc-raised-button.mat-primary:hover {
+    background-color: #303F9F;
+}
+
+.mat-mdc-raised-button.mat-accent {
+    background-color: #FFC107;
+    color: black;
+}
+
+.mat-mdc-raised-button.mat-accent:hover {
+    background-color: #FFA000;
+}
+
+.mat-sort-header-arrow {
+  color: white !important;
+}
+
+
+.custom-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  box-shadow: 0 0 10px rgba(0, 51, 102, 0.2) !important;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 12px !important;
+  text-align: center !important;
+  border: 1px solid #34445d !important;
+}
+
+.custom-table th {
+  background-color: #34445d !important;
+  color: white;
+}
+
+.custom-table tbody tr:nth-child(even) {
+  background-color: #e6f0ff !important;
+}

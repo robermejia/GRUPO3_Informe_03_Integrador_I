@@ -1,0 +1,21 @@
+.productos-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 51, 102, 0.2);
+}
+
+.productos-table th,
+.productos-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #003366;
+}
+
+.productos-table th {
+  background-color: #003366;
+  color: white;
+}
+
+.productos-table tbody tr:nth-child(even) {
+  background-color: #e6f0ff;
+}

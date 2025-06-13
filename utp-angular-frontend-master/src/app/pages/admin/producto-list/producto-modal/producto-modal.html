@@ -1,0 +1,27 @@
+<h2 mat-dialog-title class="text-center">{{ title }}</h2>
+
+<mat-dialog-content>
+  <div [formGroup]="formGroup" class="grid grid-cols-1 w-[400px]">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Imagen</mat-label>
+      <input matInput formControlName="imagen" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Precio</mat-label>
+      <input matInput formControlName="precio" type="number" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Stock</mat-label>
+      <input matInput formControlName="stock" type="number" />
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button matButton="filled" mat-dialog-close>Cancelar</button>
+  <button matButton="filled" [disabled]="formGroup.invalid" (click)="guardar()">Guardar</button>
+</mat-dialog-actions>

@@ -1,0 +1,47 @@
+<mat-toolbar class="!bg-[#34445d]" style="padding-inline: 200px; height: 100px;">
+  <div class="container flex justify-between">
+    <div>
+      <img _ngcontent-ng-c3952633943=""
+        src="images/logo.jpg" alt="UTP LOGO" class="h-15 mx-auto mb-3 !bg-contain">
+    </div>
+
+    @if (isAdmin) {
+    <div class="flex-1 mx-10 content-center">
+      <a matButton routerLink="/admin/productos" class="!text-white">Productos</a>
+      <a matButton routerLink="/admin/pedidos" class="!text-white">Pedidos</a>
+      <a matButton routerLink="/admin/clientes" class="!text-white">Clientes</a>
+    </div>
+    }
+
+    <div style="position: relative;">
+      <button matMiniFab [matMenuTriggerFor]="menu" class="!bg-[#ffcf00] !hover:bg-[#dfb600] !text-black">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+
+    <mat-menu #menu="matMenu">
+      <div style="min-width: 170px;"></div>
+      @if (isLogged) {
+      @if (isCustomer) {
+      <button mat-menu-item routerLink="/pedidos" class="!text-center">Ver mis pedidos</button>
+      } @else {
+      <button mat-menu-item routerLink="/admin/productos" class="!text-center">Admin Productos</button>
+      <button mat-menu-item routerLink="/admin/pedidos" class="!text-center">Admin Pedidos</button>
+      <button mat-menu-item routerLink="/admin/clientes" class="!text-center">Admin Clientes</button>
+      }
+      }
+
+      @if (isCustomer) {
+      <button mat-menu-item routerLink="/carrito-compras" class="!text-center">Ver carrito</button>
+      }
+
+      @if (!isLogged) {
+      <button mat-menu-item routerLink="/login" class="!text-center">Iniciar sesión</button>
+      } @else {
+      <button mat-menu-item (click)="logout()" class="!text-center">Cerrar sesión</button>
+      }
+
+    </mat-menu>
+  </div>
+</mat-toolbar>

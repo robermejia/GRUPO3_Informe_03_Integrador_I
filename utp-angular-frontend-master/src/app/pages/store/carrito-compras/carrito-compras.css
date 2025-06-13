@@ -1,0 +1,17 @@
+.productos-table th,
+.productos-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #34445d;
+}
+
+.productos-table th {
+  background-color: #34445d;
+  color: white;
+}
+
+.producto-imagen {
+  width: 60px;
+  height: auto;
+  border-radius: 5px;
+}

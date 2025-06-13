@@ -1,0 +1,66 @@
+<div class="container mx-auto mt-5">
+  <h1 class="text-2xl text-center my-4">Listado de Clientes</h1>
+  <!-- Tabla -->
+  <div>
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+      class="custom-table">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.id }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.nombre }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="apellido">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.apellido }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dni">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>DNI</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.dni }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="telefono">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Telefono</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.telefono }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="correo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Correo</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.correo }}
+        </td>
+      </ng-container>
+
+      <tr *matNoDataRow>
+        <td [attr.colspan]="columns.length">
+          @if (isLoading) {
+          <h2>Cargando...</h2>
+          } @else if (!isLoading && dataSource.data.length === 0) {
+          <h2>No se encontraron datos</h2>
+          }
+        </td>
+      </tr>
+
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let rows; columns: columns"></tr>
+    </table>
+
+    <mat-paginator [length]="resultsLength" [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+
+</div>
